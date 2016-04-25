@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="icon" type="image/png" href="assets/images/zombie.png" />
+    <title>ZBT - Zombie Behavioral Therapy</title>
+    <style>body { margin: 0; background: #B4D9E7; }</style>
+    <script src="lib/phaser.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/mainMenu.js"></script>
+    <script src="js/howToPlay.js"></script>
+    <script src="js/story.js"></script>
+    <script src="js/play.js"></script>
+    <script src="js/over.js"></script>
+</head>
+<body>
+    <script>
+        (function(){
+            // Initialize Phaser
+            var game = new Phaser.Game(640, 960, Phaser.AUTO, "game");
+            game.state.add("Boot", Candy.Boot);
+            game.state.add("Preloader", Candy.Preloader);
+            game.state.add("MainMenu", Candy.MainMenu);
+            game.state.add("Story", Candy.Story);
+            game.state.add("HowToPlay", Candy.HowToPlay);
+            game.state.add("Play", Candy.Play);
+            game.state.add("Over", Candy.Over);
+
+            // Start the Boot state
+            game.state.start("Boot");
+        })();  
+    </script>
+</body>
+</html>
