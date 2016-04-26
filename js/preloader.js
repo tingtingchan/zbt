@@ -40,6 +40,7 @@ Candy.Preloader.prototype = {
 		this.load.spritesheet('button-play', 'assets/images/button-play.png', 227, 122);
 		this.load.spritesheet('button-sound', 'assets/images/button-sound.png', 73, 66);
 		this.load.spritesheet('button-pause', 'assets/images/button-pause.png', 96, 98);
+		this.load.spritesheet('button-back', 'assets/images/button-back.png', 96, 98);
 		this.load.spritesheet('button-tutorial', 'assets/images/button-tutorial.png', 402, 149);
 		this.load.spritesheet('button-back-to-main', 'assets/images/button-back-to-main.png', 400, 153);
 		this.load.spritesheet('button-try-again', 'assets/images/button-try-again.png', 400, 149);

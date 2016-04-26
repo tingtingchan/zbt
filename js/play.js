@@ -9,7 +9,6 @@ Candy.Play = function(game){
 	this._cursors = null;
 	this._floor = null;
 	this._increasedGravity = 200;
-	this._increasedSpeed = 0;
 	this._mute = null;
 
 	// Define Candy variables to reuse them in Candy.item functions
@@ -17,6 +16,7 @@ Candy.Play = function(game){
 	Candy._score = 0;
 	Candy._health = 3;
 	Candy.muteStatus = null;
+	Candy._increasedSpeed = 0;
 
 };
 
@@ -50,7 +50,7 @@ Candy.Play.prototype = {
 		this._three_hearts.scale.setTo(1.2, 1.2);
 
 		// Add a pause button
-		this.add.button(Candy.worldWidth-96-10, 5, 'button-pause', this.managePause, this, 1, 0, 0);
+		this.add.button(Candy.worldWidth-96-10, 5, 'button-pause', this.managePause, this, 1, 0);
 
 		// Create the player; add animations
 		this._player = this.add.sprite(30, 745, 'zombie-idle');
@@ -149,7 +149,7 @@ Candy.Play.prototype = {
 		if (this._spawnItemsTimer > 1000 ){
 			// Spawn a new candy
 			Candy.item.spawnCandy(this);
-		} else if (this.game.rnd.integerInRange(5000, this._spawnItemsTimer) % 200 == 0 ){
+		} else if (this.game.rnd.integerInRange(500, this._spawnItemsTimer) % 200 == 0 ){
 			// Spawn a new brain ice cream
 			Candy.item.spawnBrainIceCream(this);
 		};
@@ -163,7 +163,11 @@ Candy.Play.prototype = {
 		// Mode 2: (Candies from right/left) 
 		// Increases difficulty of the game - increase speed over gameplay time
 
-		this._increasedSpeed += this.time.elapsed / 100;
+		//this._increasedSpeed += this.game.time.elapsed / 100;
+		
+		//this._increasedSpeed += this.time.totalElapsedSeconds();
+		Candy._increasedSpeed += 0.3;
+		console.log(Candy._increasedSpeed);
 
 		//***********************************************************************
 
@@ -201,7 +205,7 @@ Candy.Play.prototype = {
 
 	        // Generate weighed random music
 	        sounds = [nom, isItCookie, meWantCookie, isItAnOrange];
-	        soundsWeight= [8.5, 0.5, 0.5, 0.5]; 
+	        soundsWeight= [7, 1, 1, 1]; 
 	        weighedsounds = new Array();
 	        currentSound = 0;
 
@@ -231,6 +235,7 @@ Candy.Play.prototype = {
 	},
 
 	gameOver: function(player, brainIceCream){
+
 		brainIceCream.kill();
 		if (this.game.muteStatus == false){
 			no = this.game.add.audio('no');
@@ -254,7 +259,7 @@ Candy.item = {
 
 	spawnCandy: function(game){
 		// console.log(game._increasedGravity);
-		console.log(game._increasedSpeed);
+		//console.log(game._increasedSpeed);
 
 		game._spawnItemsTimer = 0;
 
@@ -273,17 +278,17 @@ Candy.item = {
 		// <-- Mode 2: Projectile Motion - Candies coming from right/left -->
 		var dropPosX = [50, Candy.worldWidth];
 		var randomDropPosX = dropPosX[Math.floor(Math.random() * dropPosX.length)];
-	    var randomDropPosY = Math.floor(Math.random()*Candy.worldHeight/2);
+	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/2.5)+50);
 
 		var candy = game.add.sprite(randomDropPosX, randomDropPosY, 'candy');
 
 		game.physics.enable(candy, Phaser.Physics.ARCADE);
 
 		if (randomDropPosX == 50){
-			candy.body.velocity.x = (500 / (Math.sqrt(700 / 500))) + game._increasedSpeed;
+			candy.body.velocity.x = (500 / (Math.sqrt(700 / 500))) + Candy._increasedSpeed;
 		} 
 		else{
-			candy.body.velocity.x = -((500 / (Math.sqrt(700 / 500))) + game._increasedSpeed);
+			candy.body.velocity.x = -((500 / (Math.sqrt(700 / 500))) + Candy._increasedSpeed);
 		}
 
 		//***********************************************************************		
@@ -309,7 +314,7 @@ Candy.item = {
 
 	        	// Generate weighed random music
 		        var sounds = [nom, isItCookie, meWantCookie, isItAnOrange];
-		        var soundsWeight= [8.5, 0.5, 0.5, 0.5]; 
+		        var soundsWeight= [7, 1, 1, 1]; 
 		        var weighedsounds = new Array();
 		        var currentSound = 0;
 
@@ -343,17 +348,17 @@ Candy.item = {
 
 		var dropPosX = [50, Candy.worldWidth];
 		var randomDropPosX = dropPosX[Math.floor(Math.random() * dropPosX.length)];
-	    var randomDropPosY = Math.floor(Math.random()*Candy.worldHeight/2);
+	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/2.5)+50);
 
 		var brainIceCream = game.add.sprite(randomDropPosX, randomDropPosY, 'brain-ice-cream');
 
 		game.physics.enable(brainIceCream, Phaser.Physics.ARCADE);
 
 		if (randomDropPosX == 50){
-			brainIceCream.body.velocity.x = (500 / (Math.sqrt(700 / 500))) + game._increasedSpeed;
+			brainIceCream.body.velocity.x = (500 / (Math.sqrt(700 / 500))) + Candy._increasedSpeed;
 		} 
 		else{
-			brainIceCream.body.velocity.x = -((500 / (Math.sqrt(700 / 500))) + game._increasedSpeed);
+			brainIceCream.body.velocity.x = -((500 / (Math.sqrt(700 / 500))) + Candy._increasedSpeed);
 		}
 
 		brainIceCream.scale.setTo(1.8, 1.8);

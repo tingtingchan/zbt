@@ -53,6 +53,7 @@ Candy.Over.prototype = {
 	    };
 	    this.game.state.start("Play");
         Candy._score = 0;
+        Candy._increasedSpeed = 0;
 	},
 
 	stateBack: function(){
@@ -63,5 +64,6 @@ Candy.Over.prototype = {
 		};
 		this.game.state.start("MainMenu");
 		Candy._score = 0;
+		Candy._increasedSpeed = 0;
 	}
 }

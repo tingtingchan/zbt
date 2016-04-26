@@ -36,7 +36,7 @@ Candy.MainMenu.prototype = {
         };
 
         // Add logo
-        this._logo = this.add.sprite((Candy.worldWidth-395)/2+100, 160, 'logo');
+        this._logo = this.add.sprite((Candy.worldWidth-395)/2+80, 160, 'logo');
         this._logo.scale.setTo(1.3, 1.3);
 
         // Start the game by clicking the button
