@@ -72,7 +72,7 @@ Candy.Play.prototype = {
 		this._cursors = this.input.keyboard.createCursorKeys();
 		this._jump = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-		this._fontStyle = { font: "36px Arial", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
+		this._fontStyle = { font: "36px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
 		// initialize the spawn timer
 		this._spawnItemsTimer = 0;
 		// initialize the score text with 0
@@ -229,7 +229,8 @@ Candy.Play.prototype = {
 		// Display points on the screen
 		var randX = this.rnd.integerInRange(candy.x - 100, candy.x + 100);
 		var randY = this.rnd.integerInRange(candy.y -100, candy.y + 100);
-		var pointsAdded = this.add.text(randX, randY, '+10',{ font: "48px Arial", fill: "#000", stroke: "#FFF", strokeThickness: 10 });
+		var pointsAdded = this.add.text(randX, randY, '+10',{ font: "40px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5 });
+
 		pointsAdded.anchor.set(0.5, 0.5);
 		this.add.tween(pointsAdded).to({ alpha: 0, y: randY-50 }, 1000, Phaser.Easing.Linear.None, true);
 	},
@@ -278,7 +279,7 @@ Candy.item = {
 		// <-- Mode 2: Projectile Motion - Candies coming from right/left -->
 		var dropPosX = [50, Candy.worldWidth];
 		var randomDropPosX = dropPosX[Math.floor(Math.random() * dropPosX.length)];
-	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/2.5)+50);
+	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/3)+60);
 
 		var candy = game.add.sprite(randomDropPosX, randomDropPosY, 'candy');
 
@@ -301,7 +302,7 @@ Candy.item = {
 
 			var randX = game.rnd.integerInRange(candy.x - 100, candy.x + 100);
 			var randY = game.rnd.integerInRange(candy.y -100, candy.y + 100);
-			var pointsAdded = game.add.text(randX, randY, '+10',{ font: "48px Arial", fill: "#000", stroke: "#FFF", strokeThickness: 10 });
+			var pointsAdded = game.add.text(randX, randY, '+10',{ font: "40px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5 });
 			pointsAdded.anchor.set(0.5, 0.5);
 			game.add.tween(pointsAdded).to({ alpha: 0, y: randY-50 }, 1000, Phaser.Easing.Linear.None, true);
 
@@ -348,7 +349,7 @@ Candy.item = {
 
 		var dropPosX = [50, Candy.worldWidth];
 		var randomDropPosX = dropPosX[Math.floor(Math.random() * dropPosX.length)];
-	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/2.5)+50);
+	    var randomDropPosY = Math.floor((Math.random()*Candy.worldHeight/3)+60);
 
 		var brainIceCream = game.add.sprite(randomDropPosX, randomDropPosY, 'brain-ice-cream');
 

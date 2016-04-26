@@ -19,7 +19,7 @@ Candy.Over.prototype = {
 		this.add.sprite(0, 0, 'overlay').alpha = 0.7;
 
 		this._score = this.add.sprite(10, 5, 'score-bg');
-        var fontCurrentScore = { font: "36px Arial", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
+        var fontCurrentScore = { font: "36px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
         this.add.text(112, 20, Candy._score, fontCurrentScore);
 
         // Store the highest score and show New High Score message when it exists

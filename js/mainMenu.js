@@ -46,7 +46,7 @@ Candy.MainMenu.prototype = {
         // Using HTML Local Storage to get highscore record
         storageAPI.initUnset('ZBT-highscore', 0);
         var highscore = storageAPI.get('ZBT-highscore') || 0;
-        var fontHighscore = { font: "36px Arial", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
+        var fontHighscore = { font: "36px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
         this.add.text(130, 85, highscore, fontHighscore);
         
         // Click the button to HowToPlay state
