@@ -47,7 +47,7 @@ Candy.MainMenu.prototype = {
         storageAPI.initUnset('ZBT-highscore', 0);
         var highscore = storageAPI.get('ZBT-highscore') || 0;
         var fontHighscore = { font: "36px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
-        this.add.text(130, 85, highscore, fontHighscore);
+        this.add.text(130, 88, highscore, fontHighscore);
         
         // Click the button to HowToPlay state
         this._tutorial_button = this.add.button(Candy.worldWidth-401+80, Candy.worldHeight-280, 'button-tutorial', this.howToPlay, this, 1, 0);
