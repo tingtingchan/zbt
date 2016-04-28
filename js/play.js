@@ -73,12 +73,10 @@ Candy.Play.prototype = {
 		this._jump = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 		this._fontStyle = { font: "36px Sinking Ship", fill: "#FFCC00", stroke: "#333", strokeThickness: 5, align: "center" };
-		// initialize the spawn timer
+		// Initialize the spawn timer
 		this._spawnItemsTimer = 0;
-		// initialize the score text with 0
+		// Initialize the score text with 0
 		Candy._scoreText = this.add.text(112, 20, "0", this._fontStyle);
-		// set health of the player
-		// Candy._health = 10;
 
 		// Create a new group for candy
 		this._candyGroup = this.add.group();
@@ -259,7 +257,7 @@ Candy.Play.prototype = {
 Candy.item = {
 
 	spawnCandy: function(game){
-		// console.log(game._increasedGravity);
+		//console.log(game._increasedGravity);
 		//console.log(game._increasedSpeed);
 
 		game._spawnItemsTimer = 0;
@@ -391,9 +389,9 @@ Candy.item = {
 	},
 
 	clickCandy: function(candy){
-		// kill the candy when it's clicked
+		// Kill the candy when it's clicked
 		candy.kill();
-		// add points to the score
+		// Add points to the score
 		Candy._score += 10;
 		// Update score text
 		Candy._scoreText.setText(Candy._score);
